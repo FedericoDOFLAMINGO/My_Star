@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para mi princesa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--noche:#1b1740;--ciruela:#3a2466;--rosa:#f4b6c8;--oro:#f3d28b;--crema:#fff4e6;--azul:#8fb8ff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Cormorant Garamond',Georgia,serif;color:var(--crema);background:linear-gradient(180deg,#14103a 0%,#2b1b58 45%,#6a3a7a 80%,#d98aa6 100%);background-attachment:fixed;min-height:100vh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+.script{font-family:'Great Vibes','Brush Script MT',cursive;font-weight:400}
+#stars,#fx{position:fixed;inset:0;pointer-events:none;z-index:0}
+.lantern{position:fixed;bottom:-60px;width:26px;height:34px;border-radius:12px 12px 8px 8px;background:radial-gradient(circle at 50% 60%,#fff3c4,#f3b95f 70%);box-shadow:0 0 22px 8px rgba(243,185,95,.55);opacity:0;z-index:0;animation:sube linear infinite}
+.lantern::after{content:"";position:absolute;left:50%;top:-8px;width:1px;height:8px;background:var(--oro)}
+@keyframes sube{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:.9}90%{opacity:.8}100%{transform:translateY(-115vh) translateX(var(--dx));opacity:0}}
+
+/* Portada */
+#cover{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%,#3a2466,#14103a);transition:opacity 1.2s,visibility 1.2s}
+#cover.off{opacity:0;visibility:hidden}
+.book{width:min(78vw,330px);aspect-ratio:3/4;border-radius:6px 16px 16px 6px;background:linear-gradient(135deg,#5b2a6e,#2e1a5c);border:2px solid var(--oro);box-shadow:0 0 0 6px rgba(243,210,139,.15),0 20px 60px rgba(0,0,0,.5),inset 10px 0 18px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px;text-align:center;cursor:pointer;position:relative;animation:flota 4s ease-in-out infinite;transform-origin:left center;transition:transform 1s}
+.book::before{content:"";position:absolute;inset:12px;border:1px solid rgba(243,210,139,.55);border-radius:3px 10px 10px 3px}
+.book.abre{transform:perspective(900px) rotateY(-70deg);opacity:.2}
+@keyframes flota{50%{translate:0 -8px}}
+.book h1{font-size:2.6rem;color:var(--oro);line-height:1.1;text-shadow:0 0 18px rgba(243,210,139,.6)}
+.book p{font-style:italic;font-size:1.15rem;color:var(--rosa)}
+.book small{font-size:.95rem;color:var(--crema);opacity:.8;animation:pulso 2s infinite}
+@keyframes pulso{50%{opacity:.3}}
+
+/* Carta */
+main{position:relative;z-index:2;max-width:620px;margin:0 auto;padding:0 22px 80px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding-bottom:12vh}
+.castle{width:min(92%,460px);margin-bottom:-6px;filter:drop-shadow(0 0 24px rgba(243,210,139,.35))}
+.hero h2{font-size:clamp(3rem,13vw,4.6rem);color:var(--oro);line-height:1.05;text-shadow:0 0 22px rgba(243,210,139,.5);margin-top:18px}
+.hero p{font-size:1.25rem;font-style:italic;color:var(--rosa);margin-top:10px}
+.pagina{margin:54px 0;padding:34px 26px;border-radius:22px;background:linear-gradient(160deg,rgba(255,244,230,.1),rgba(255,244,230,.04));border:1px solid rgba(243,210,139,.4);backdrop-filter:blur(3px);font-size:1.3rem;line-height:1.75;text-align:center;opacity:0;transform:translateY(24px);transition:opacity 1.2s,transform 1.2s;position:relative}
+.pagina.ver{opacity:1;transform:none}
+.pagina::before,.pagina::after{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--oro);opacity:.8}
+.pagina::before{top:10px;left:10px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
+.pagina::after{bottom:10px;right:10px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.pagina em{color:var(--rosa)}
+.grande{font-size:1.9rem;color:var(--oro);line-height:1.5}
+
+/* Princesas */
+.salon{margin:60px 0;text-align:center}
+.salon h3{font-size:2.2rem;color:var(--oro);margin-bottom:6px}
+.salon>p{font-style:italic;color:var(--rosa);font-size:1.1rem}
+.coronas{display:flex;align-items:flex-end;justify-content:center;gap:clamp(4px,2vw,14px);margin:28px 0 14px}
+.corona{background:none;border:0;cursor:pointer;color:var(--c);width:clamp(46px,13vw,66px);filter:drop-shadow(0 0 8px var(--c));opacity:.7;transition:transform .3s,opacity .3s}
+.corona:hover,.corona:focus-visible{transform:translateY(-6px) scale(1.08);opacity:1;outline:none}
+.corona svg{width:100%;display:block}
+.corona.ella{width:clamp(96px,28vw,140px);opacity:1;filter:drop-shadow(0 0 16px var(--oro)) drop-shadow(0 0 40px rgba(243,210,139,.7));animation:brilla 2.6s ease-in-out infinite}
+@keyframes brilla{50%{filter:drop-shadow(0 0 26px #fff1b8) drop-shadow(0 0 60px rgba(243,210,139,.95));transform:translateY(-6px)}}
+#nota{min-height:5.2em;font-size:1.3rem;font-style:italic;line-height:1.55;padding:0 6px;transition:opacity .4s}
+#nota.ella{color:var(--oro);font-size:1.7rem}
+
+/* Constelación */
+.deseo{margin:60px 0 20px;text-align:center}
+.deseo h3{font-size:2.2rem;color:var(--oro);margin-bottom:4px}
+.deseo>p{font-style:italic;color:var(--rosa);font-size:1.1rem}
+#cielo{width:min(92%,380px);margin:14px auto 0;display:block;overflow:visible}
+.st{cursor:pointer}
+.st .halo{fill:var(--oro);opacity:.15}
+.st .core{fill:#fff4e6;opacity:.55}
+.st.sig .halo{opacity:.6;animation:latido 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.st.sig .core{opacity:1}
+.st.ok .halo{opacity:.45}.st.ok .core{opacity:1}
+@keyframes latido{50%{transform:scale(1.9);opacity:.15}}
+#hilo path{fill:none;stroke:var(--oro);stroke-width:1.6;stroke-linecap:round;filter:drop-shadow(0 0 4px var(--oro))}
+#relleno{fill:url(#gc);opacity:0;transition:opacity 2s}
+#relleno.on{opacity:1}
+#af{font-family:'Great Vibes',cursive;font-size:30px;fill:#fff4e6;opacity:0;transition:opacity 2s 1s;text-anchor:middle}
+#af.on{opacity:1}
+#deseo-txt{min-height:5em;margin-top:12px;font-size:1.4rem;font-style:italic;line-height:1.6;color:var(--oro);opacity:0;transition:opacity 2s 1.2s}
+#deseo-txt.on{opacity:1}
+.firma{text-align:center;margin:50px 0 10px}
+.firma .script{font-size:2.8rem;color:var(--oro);text-shadow:0 0 18px rgba(243,210,139,.5)}
+.firma p{font-style:italic;font-size:1.2rem;color:var(--rosa);margin-bottom:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.pagina{opacity:1;transform:none}}
+
+/* Final: Evangeline */
+#final{position:fixed;inset:0;z-index:40;background:#05030f;opacity:0;visibility:hidden;transition:opacity 2.5s,visibility 2.5s}
+#final.on{opacity:1;visibility:visible}
+#evan{position:fixed;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;z-index:42;opacity:0;transform:scale(1);filter:drop-shadow(0 0 4px #dbe9ff) drop-shadow(0 0 12px #8fb8ff);transition:opacity 3s}
+#evan.ver{opacity:1;animation:tw 2.4s ease-in-out infinite}
+#evan.go{transition:opacity 3s,transform 12s cubic-bezier(.55,0,.95,.35),filter 12s;transform:scale(48);filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 30px #cfe0ff) drop-shadow(0 0 80px #8fb8ff);animation:none}
+#evan i{display:block;width:100%;height:100%;background:#fff;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+@keyframes tw{50%{filter:drop-shadow(0 0 2px #dbe9ff) drop-shadow(0 0 7px #8fb8ff)}}
+#cap{position:fixed;left:0;right:0;top:62%;text-align:center;z-index:42;font-style:italic;font-size:1.3rem;color:var(--rosa);opacity:0;transition:opacity 2s}
+#cap.on{opacity:1}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;z-index:45;pointer-events:none}
+.chispa{position:fixed;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff4e6;box-shadow:0 0 10px #8fb8ff;z-index:46;pointer-events:none;animation:vuela 2s ease-out forwards}
+@keyframes vuela{to{transform:translate(var(--x),var(--y)) scale(.2);opacity:0}}
+#ded{position:fixed;inset:0;z-index:44;overflow:auto;display:flex;padding:30px 24px;opacity:0;visibility:hidden;transition:opacity 3s,visibility 3s}
+#ded.on{opacity:1;visibility:visible}
+#ded div{margin:auto;max-width:560px;text-align:center;font-size:1.35rem;line-height:1.75}
+#ded h3{font-size:3rem;color:var(--oro);text-shadow:0 0 22px rgba(243,210,139,.6);margin-bottom:14px}
+#ded p{margin-bottom:16px}
+#ded .grande{font-size:2rem;margin:22px 0 6px}
+#ded button{margin-top:22px;background:none;border:1px solid rgba(243,210,139,.5);color:var(--rosa);font:italic 1.05rem 'Cormorant Garamond',serif;padding:8px 18px;border-radius:20px;cursor:pointer}
+#mus{position:fixed;top:14px;right:14px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(243,210,139,.6);background:rgba(27,23,64,.7);color:var(--oro);cursor:pointer;display:none;align-items:center;justify-content:center}
+#mus.show{display:flex}#mus svg{width:20px;height:20px}
+@media (prefers-reduced-motion:reduce){#final,#ded{transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<audio id="musica" src="evangeline.mp3" loop preload="auto"></audio>
+<button id="mus" aria-label="Pausar o reanudar la música"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path id="ondas" d="M15 8.5a5 5 0 0 1 0 7M17.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></button>
+
+<div id="cover">
+  <div class="book" id="book" role="button" tabindex="0" aria-label="Abrir el cuento">
+    <p>Había una vez…</p>
+    <h1 class="script">Nuestra historia</h1>
+    <p>Un corazón que no parará de amarte</p>
+    <small>toca para abrir</small>
+  </div>
+</div>
+
+<main>
+  <section class="hero">
+    <svg class="castle" viewBox="0 0 460 220" fill="#0f0b2e" aria-hidden="true">
+      <rect x="0" y="200" width="460" height="20"/>
+      <rect x="40" y="130" width="40" height="72"/><polygon points="34,130 60,70 86,130"/>
+      <rect x="150" y="100" width="34" height="102"/><polygon points="144,100 167,38 190,100"/>
+      <rect x="200" y="80" width="60" height="122"/><polygon points="192,80 230,0 268,80"/>
+      <rect x="276" y="100" width="34" height="102"/><polygon points="270,100 293,38 316,100"/>
+      <rect x="380" y="130" width="40" height="72"/><polygon points="374,130 400,70 426,130"/>
+      <rect x="84" y="160" width="70" height="42"/><rect x="310" y="160" width="70" height="42"/>
+      <path d="M215 202v-34a15 15 0 0 1 30 0v34z" fill="#f3d28b" opacity=".9"/>
+      <g fill="#f3d28b"><rect x="224" y="108" width="12" height="20" rx="6"/><rect x="55" y="150" width="9" height="14" rx="4"/><rect x="396" y="150" width="9" height="14" rx="4"/><rect x="162" y="130" width="9" height="14" rx="4"/><rect x="288" y="130" width="9" height="14" rx="4"/></g>
+    </svg>
+    <h2 class="script">Para mi princesa</h2>
+    <p>mi amor, mi vida</p>
+  </section>
+
+  <article class="pagina"><p>Hay miles de historias de amor, pero de entre todas, la nuestra es la que destaca sobre todas, porque nuestro amor es único, es sincero, es verdadero; Y yo adoro todo lo que somos. </p></article>
+
+  <article class="pagina"><p>Porque lo nuestro es  real. La vivo contigo, la siento en ti, y cada día me confirma que ningún final feliz se compara con saber que existes y que eres mía en mi corazón.</p></article>
+
+  <article class="pagina"><p>Y si todas las princesas estuvieran juntas en un mismo salón, yo cruzaría el lugar entero atravesándolo con la mirada fija en ti, porque <em>tú eres la más hermosa</em>.</p><p class="script grande">Eres mi princesa, mi amor, mi vida.</p></article>
+
+  <section class="salon pagina" id="salon">
+    <h3 class="script">El gran salón</h3>
+    <p>toca cada corona</p>
+    <div class="coronas">
+      <button class="corona" style="--c:#8fb8ff" data-t="Tienen su magia, su castillo y su final feliz…" aria-label="Corona azul"></button>
+      <button class="corona" style="--c:#a8e6cf" data-t="…historias que todos aman y que yo también admiro…" aria-label="Corona verde"></button>
+      <button class="corona ella" aria-label="Tu corona"></button>
+      <button class="corona" style="--c:#c9a7ff" data-t="…pero ninguna de ellas eres tú." aria-label="Corona lila"></button>
+      <button class="corona" style="--c:#ffb36b" data-t="Y yo ya encontré a mi princesa." aria-label="Corona naranja"></button>
+    </div>
+    <div id="nota" aria-live="polite">Todas están aquí, pero hay una que brilla más.</div>
+  </section>
+
+  <article class="pagina"><p>TE AMO y te adoro con todo mi ser, con toda mi eternidad y con todo lo que soy. Te admiro, te deseo, anhelo todo de ti: tu risa, tu mirada, tu forma de ser, cada pedacito de lo que eres.</p></article>
+
+  <article class="pagina"><p>Quiero que siempre lo recuerdes: <em>siempre te voy a querer</em>, y lo que más quiero en este mundo es tu felicidad.</p></article>
+
+  <section class="deseo">
+    <h3 class="script">Pide un deseo</h3>
+    <p>toca las estrellas que brillan, una por una</p>
+    <svg id="cielo" viewBox="0 0 200 180" aria-label="Constelación en forma de corazón">
+      <defs><radialGradient id="gc" cx="50%" cy="40%"><stop offset="0" stop-color="#ff9bb5" stop-opacity=".55"/><stop offset="1" stop-color="#d6336c" stop-opacity=".15"/></radialGradient></defs>
+      <polygon id="relleno" points="100,165 58,128 24,86 30,42 66,26 100,56 134,26 170,42 176,86 142,128"/>
+      <g id="hilo"></g><g id="puntos"></g>
+      <text id="af" x="100" y="92">A + F</text>
+    </svg>
+    <div id="deseo-txt">Si pudiera pedirle un deseo a una estrella, no pediría nada: ya te tengo a ti. Eres mi deseo cumplido, mi amor, mi princesa.</div>
+  </section>
+
+  <div class="firma">
+    <p>Con todo mi ser, hoy y siempre,</p>
+    <div class="script">Tu Fer</div>
+  </div>
+</main>
+
+<div id="final" aria-hidden="true"></div>
+<div id="evan"><i></i></div>
+<div id="cap">mira… una estrella</div>
+<div id="flash"></div>
+<section id="ded">
+  <div>
+    <h3 class="script">Mi estrella</h3>
+    <p>Hay estrellas a las que se les pide un deseo. Yo no necesité pedir nada: la vida puso a la mía en mi camino, y eres tú.</p>
+    <p>Eres mi estrella, mi princesa, mi amor, mi vida. La que brilla más que todas y la que ilumina todo lo que soy.</p>
+    <p>Te amo y te adoro con todo mi ser, con toda mi eternidad. Gracias por existir, por ser mi todo. Siempre te voy a querer y siempre voy a querer tu felicidad.</p>
+    <p class="script grande">Tuyo para siempre,</p>
+    <p class="script grande">Fer</p>
+    <button id="otra">volver a empezar</button>
+  </div>
+</section>
+<script>
+// Estrellas
+const cv=document.getElementById('stars'),cx=cv.getContext('2d');let S=[];
+function fit(){cv.width=innerWidth;cv.height=innerHeight;S=Array.from({length:90},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height*.8,r:Math.random()*1.4+.3,p:Math.random()*6}))}
+fit();addEventListener('resize',fit);
+(function t(n){cx.clearRect(0,0,cv.width,cv.height);S.forEach(s=>{cx.globalAlpha=.4+.6*Math.abs(Math.sin(n/1200+s.p));cx.fillStyle='#fff4e6';cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);cx.fill()});requestAnimationFrame(t)})(0);
+
+// Faroles
+for(let i=0;i<9;i++){const l=document.createElement('div');l.className='lantern';l.style.left=(5+Math.random()*90)+'vw';l.style.setProperty('--dx',(Math.random()*60-30)+'px');l.style.animationDuration=(14+Math.random()*10)+'s';l.style.animationDelay=(Math.random()*14)+'s';l.style.transform='scale('+(.6+Math.random()*.7)+')';document.body.appendChild(l)}
+
+// Portada
+const book=document.getElementById('book'),cover=document.getElementById('cover');
+const mus=document.getElementById('musica'),bm=document.getElementById('mus');
+bm.onclick=()=>{if(mus.paused){mus.play();document.getElementById('ondas').style.opacity=1}else{mus.pause();document.getElementById('ondas').style.opacity=.2}};
+function abrir(){mus.play().catch(()=>{});bm.classList.add('show');book.classList.add('abre');setTimeout(()=>cover.classList.add('off'),700)}
+book.onclick=abrir;book.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')abrir()};
+
+// Aparecer al bajar
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('ver');io.unobserve(e.target)}}),{threshold:.25});
+document.querySelectorAll('.pagina').forEach(p=>io.observe(p));
+
+// Coronas
+const corona='<svg viewBox="0 0 100 70" fill="currentColor"><path d="M8 58 L2 16 L30 36 L50 6 L70 36 L98 16 L92 58z"/><rect x="8" y="58" width="84" height="8" rx="3" opacity=".85"/><circle cx="2" cy="14" r="5"/><circle cx="50" cy="5" r="6"/><circle cx="98" cy="14" r="5"/><circle cx="50" cy="44" r="6" fill="#fff4e6" opacity=".85"/></svg>';
+document.querySelectorAll('.corona').forEach(b=>{b.innerHTML=corona;b.onclick=()=>{const n=document.getElementById('nota');n.style.opacity=0;setTimeout(()=>{if(b.classList.contains('ella')){n.className='script';n.id='nota';n.textContent='Tú. La más hermosa de todas. Mi princesa.'}else{n.className='';n.textContent=b.dataset.t}n.style.opacity=1},250)}});
+
+// Constelación en forma de corazón
+const P=[[100,165],[58,128],[24,86],[30,42],[66,26],[100,56],[134,26],[170,42],[176,86],[142,128]];
+const NS='http://www.w3.org/2000/svg',hilo=document.getElementById('hilo'),pts=document.getElementById('puntos');let paso=0;
+const nodos=P.map((p,i)=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','st');
+  g.innerHTML='<circle class="halo" cx="'+p[0]+'" cy="'+p[1]+'" r="9"/><circle class="core" cx="'+p[0]+'" cy="'+p[1]+'" r="3.2"/><circle cx="'+p[0]+'" cy="'+p[1]+'" r="16" fill="transparent"/>';
+  g.onclick=()=>toca(i);pts.appendChild(g);return g});
+function linea(a,b){const l=document.createElementNS(NS,'path');l.setAttribute('d','M'+P[a]+' L'+P[b]);const d=Math.hypot(P[a][0]-P[b][0],P[a][1]-P[b][1]);l.style.strokeDasharray=d;l.style.strokeDashoffset=d;l.style.transition='stroke-dashoffset .6s';hilo.appendChild(l);requestAnimationFrame(()=>requestAnimationFrame(()=>l.style.strokeDashoffset=0))}
+function marca(){nodos.forEach((n,i)=>n.classList.toggle('sig',i===paso))}
+function toca(i){if(i!==paso)return;nodos[i].classList.add('ok');if(i>0)linea(i-1,i);paso++;
+  if(paso===P.length){linea(P.length-1,0);setTimeout(()=>{['relleno','af','deseo-txt'].forEach(id=>document.getElementById(id).classList.add('on'))},500)}marca()}
+marca();
+
+// Final: la estrella Evangeline
+let hecho=false;
+function final(){
+  if(hecho)return;hecho=true;document.body.style.overflow='hidden';
+  const $=id=>document.getElementById(id),ev=$('evan');
+  $('final').classList.add('on');
+  setTimeout(()=>{ev.classList.add('ver');$('cap').classList.add('on')},3000);
+  setTimeout(()=>{$('cap').classList.remove('on')},7000);
+  setTimeout(()=>ev.classList.add('go'),6000);
+  setTimeout(()=>{
+    const fl=$('flash');fl.style.opacity=1;ev.style.display='none';
+    for(let i=0;i<80;i++){const c=document.createElement('div');c.className='chispa';const a=Math.random()*6.283,d=120+Math.random()*Math.max(innerWidth,innerHeight)*.6;c.style.setProperty('--x',Math.cos(a)*d+'px');c.style.setProperty('--y',Math.sin(a)*d+'px');c.style.animationDelay=Math.random()*.2+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),2400)}
+    setTimeout(()=>{fl.style.transition='opacity 1.8s';fl.style.opacity=0},180);
+    setTimeout(()=>$('ded').classList.add('on'),900);
+  },18300);
+}
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTimeout(final,5000)}},{threshold:.9}).observe(document.querySelector('.firma'));
+document.getElementById('otra').onclick=()=>location.reload();
+</script>
+</body>
+</html>
